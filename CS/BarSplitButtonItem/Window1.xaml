@@ -1,0 +1,41 @@
+﻿<Window x:Class="BarSplitButtonItem.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Window1" Height="300" Width="300"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors">
+    <Grid>
+        <!--region #1-->
+        <dxb:BarManager CreateStandardLayout="True" Margin="12" Name="barManager1">
+            <dxb:BarManager.Items>
+                <dxb:BarSplitButtonItem Name="btnFontColor" Content="FontColor" 
+                                        Glyph="pack://application:,,,/Images/fontcolor16x16.png"
+                                        ArrowAlignment="Top"
+                                        ItemClick="btnFontColor_ItemClick">
+                    <dxb:BarSplitButtonItem.PopupControl>
+                        <dxb:PopupControlContainer>
+                            <dx:ThemedUserControl>
+                                <dxe:ColorChooser />
+                            </dx:ThemedUserControl>
+                        </dxb:PopupControlContainer>
+                    </dxb:BarSplitButtonItem.PopupControl>
+                </dxb:BarSplitButtonItem>
+            </dxb:BarManager.Items>
+
+            <!--Create a bar and display the BarSplitButtonItem in the bar-->
+            <dxb:BarManager.Bars>
+                <dxb:Bar x:Name="bar1" Caption="Bar 1">
+                    <dxb:Bar.DockInfo>
+                        <dxb:BarDockInfo ContainerType="Top"/>
+                    </dxb:Bar.DockInfo>
+                    <dxb:Bar.ItemLinks>
+                        <dxb:BarSplitButtonItemLink BarItemName="btnFontColor"/>
+                    </dxb:Bar.ItemLinks>
+                </dxb:Bar>
+            </dxb:BarManager.Bars>
+            <RichTextBox></RichTextBox>
+        </dxb:BarManager>
+        <!--endregion #1-->
+    </Grid>
+</Window>
